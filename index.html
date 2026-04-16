@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Adinath Texofab | Luxury Textiles & Fine Clothing</title>
+  <!-- Google Fonts: Elegant Serif + Clean Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- CSS VARIABLES (Warm Earthy Luxury) ---------- */
+    :root {
+      --dark-bg: #1A1410;
+      --cream: #FAF7F2;
+      --warm-bg: #F0E8D8;
+      --gold: #B8922A;
+      --muted-brown: #8B7355;
+      --near-black: #0E0B08;
+      --white: #ffffff;
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark-bg);
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, .serif, .logo-text, .card-title, .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-label {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .gold-divider {
+      width: 70px;
+      height: 2px;
+      background-color: var(--gold);
+      margin: 1rem 0 1.8rem 0;
+    }
+
+    /* Fixed Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--dark-bg);
+      padding: 1.2rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      backdrop-filter: blur(0px);
+      border-bottom: 1px solid rgba(184, 146, 42, 0.3);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* sections scroll margin (fixed navbar offset) */
+    section {
+      scroll-margin-top: 85px;
+    }
+
+    /* buttons & containers */
+    .btn-dark {
+      display: inline-block;
+      background: var(--dark-bg);
+      color: var(--cream);
+      padding: 0.9rem 2.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+    }
+
+    .btn-dark:hover {
+      background: transparent;
+      border-color: var(--dark-bg);
+      color: var(--dark-bg);
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      padding: 0.8rem 1.6rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: var(--dark-bg);
+    }
+
+    /* Hero Grid 50/50 */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 90vh;
+    }
+
+    .hero-image {
+      position: relative;
+      background-image: url('https://images.unsplash.com/photo-1585914924626-15adac1e6402?w=1000&auto=format');
+      background-size: cover;
+      background-position: center;
+    }
+    /* fallback/overlay */
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 20, 16, 0.35);
+      z-index: 1;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      background: rgba(26, 20, 16, 0.8);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1rem;
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      z-index: 2;
+      border-left: 3px solid var(--gold);
+    }
+
+    .hero-content {
+      background: var(--cream);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-label {
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .hero-headline {
+      font-size: 3.8rem;
+      line-height: 1.2;
+      margin: 1rem 0 1rem 0;
+    }
+
+    .italic-gold {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .hero-tagline {
+      color: var(--muted-brown);
+      margin: 1rem 0 1.8rem 0;
+      max-width: 90%;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      border-top: 1px solid var(--gold);
+      padding-top: 0.7rem;
+      min-width: 100px;
+    }
+
+    .stat-number {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--dark-bg);
+    }
+
+    .stat-desc {
+      font-size: 0.8rem;
+      color: var(--muted-brown);
+      letter-spacing: 0.3px;
+    }
+
+    /* Shop section */
+    .shop-section {
+      background: var(--warm-bg);
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-img {
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .card-img img {
+      transform: scale(1.05);
+    }
+
+    .card-info {
+      padding: 1.2rem;
+    }
+
+    .category-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      margin: 0.3rem 0 0.4rem;
+      font-weight: 600;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--muted-brown);
+      margin-bottom: 0.8rem;
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--dark-bg);
+      margin-bottom: 1rem;
+    }
+
+    /* About grid */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 5rem 2rem;
+      background: var(--cream);
+    }
+
+    .image-stack {
+      position: relative;
+    }
+
+    .main-img {
+      width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+
+    .accent-img {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 45%;
+      border: 5px solid var(--cream);
+      border-radius: 4px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .gold-badge-about {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--gold);
+      color: var(--dark-bg);
+      padding: 0.5rem 1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      z-index: 2;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.8rem;
+    }
+
+    .feature-block {
+      border-left: 3px solid var(--gold);
+      padding-left: 1rem;
+    }
+
+    .feature-block h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* Contact section */
+    .contact-section {
+      background: var(--dark-bg);
+      color: var(--cream);
+      padding: 5rem 2rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .contact-info p {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .map-iframe {
+      width: 100%;
+      height: 220px;
+      border: 0;
+      margin-top: 1rem;
+      filter: grayscale(0.9);
+      transition: filter 0.3s;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 0.9rem;
+      margin-bottom: 1rem;
+      background: #2A221C;
+      border: 1px solid #4A3B30;
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .contact-form input[readonly] {
+      background: #322A24;
+      cursor: default;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--near-black);
+      color: #bfb7ad;
+      padding: 3rem 2rem 1rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-size: 1.6rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .footer-links a, .footer-categories a {
+      display: block;
+      color: #bfb7ad;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover, .footer-categories a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2.5rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(184,146,42,0.2);
+      font-size: 0.8rem;
+    }
+
+    /* responsive */
+    @media (max-width: 860px) {
+      .hero-grid, .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-image {
+        min-height: 300px;
+      }
+      .hero-headline {
+        font-size: 2.5rem;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem;
+      }
+      .nav-links {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .stat-row {
+        gap: 1.2rem;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-content {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    .success-message {
+      background: var(--gold);
+      color: var(--dark-bg);
+      padding: 0.8rem;
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: 500;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Fixed Navbar -->
+<nav class="navbar">
+  <a href="#" class="logo">ADINATH <span>TEXOFAB</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- Hero Section #home -->
+  <section id="home">
+    <div class="hero-grid">
+      <div class="hero-image">
+        <div class="hero-badge">Est. in Erode · Tamil Nadu</div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-label">Premium Textile Excellence</div>
+        <h1 class="hero-headline">Where <span class="italic-gold">Threads</span> Tell a Story</h1>
+        <p class="hero-tagline">Handcrafted fabrics and fine clothing, woven with tradition and finished with modern elegance. Trusted by families across Tamil Nadu.</p>
+        <a href="#shop" class="btn-dark">Explore Collection</a>
+        <div class="stat-row">
+          <div class="stat-item"><div class="stat-number">21+</div><div class="stat-desc">Happy Reviews</div></div>
+          <div class="stat-item"><div class="stat-number">5.0 ★</div><div class="stat-desc">Star Rating</div></div>
+          <div class="stat-item"><div class="stat-number">100%</div><div class="stat-desc">Quality Fabric</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop Section #shop -->
+  <section id="shop" class="shop-section">
+    <div class="container">
+      <div class="section-label">Our Collection</div>
+      <h2 class="section-title">Curated Fabrics & Clothing</h2>
+      <div class="gold-divider"></div>
+      <div class="product-grid" id="product-grid">
+        <!-- Product 1: Kanjivaram Silk Saree -->
+        <div class="product-card" data-product="Kanjivaram Silk Saree">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1611150247550-15ea66c5ebeb?w=500&auto=format" alt="Kanjivaram Silk Saree" loading="lazy"></div>
+          <div class="card-info"><div class="category-label">Silk Saree</div><h3 class="card-title">Kanjivaram Silk Saree</h3><p class="card-desc">Pure silk with intricate zari, heirloom elegance.</p><div class="price">₹3,200</div><button class="btn-outline-gold enquire-btn">Enquire</button></div>
+        </div>
+        <!-- Product 2: Premium Cotton Shirting -->
+        <div class="product-card" data-product="Premium Cotton Shirting">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=500&auto=format" alt="Cotton Shirting" loading="lazy"></div>
+          <div class="card-info"><div class="category-label">Shirting Fabric</div><h3 class="card-title">Premium Cotton Shirting</h3><p class="card-desc">Soft, breathable, combed cotton – ideal for formals.</p><div class="price">₹180/m</div><button class="btn-outline-gold enquire-btn">Enquire</button></div>
+        </div>
+        <!-- Product 3: Churidar Dress Set -->
+        <div class="product-card" data-product="Churidar Dress Set">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1531927557220-a9e23cb9f1f4?w=500&auto=format" alt="Churidar Set" loading="lazy"></div>
+          <div class="card-info"><div class="category-label">Dress Material</div><h3 class="card-title">Churidar Dress Set</h3><p class="card-desc">Stylish & comfortable, premium cotton suit set.</p><div class="price">₹650</div><button class="btn-outline-gold enquire-btn">Enquire</button></div>
+        </div>
+        <!-- Product 4: Traditional Dhoti & Veshti -->
+        <div class="product-card" data-product="Traditional Dhoti & Veshti">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=500&auto=format" alt="Dhoti Veshti" loading="lazy"></div>
+          <div class="card-info"><div class="category-label">Traditional Wear</div><h3 class="card-title">Traditional Dhoti & Veshti</h3><p class="card-desc">Handloom cotton dhoti, temple border design.</p><div class="price">₹550</div><button class="btn-outline-gold enquire-btn">Enquire</button></div>
+        </div>
+        <!-- Product 5: Wool-Blend Suiting -->
+        <div class="product-card" data-product="Wool-Blend Suiting">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1578681393641-0ad8eae3b048?w=500&auto=format" alt="Wool Suiting" loading="lazy"></div>
+          <div class="card-info"><div class="category-label">Suiting Fabric</div><h3 class="card-title">Wool-Blend Suiting</h3><p class="card-desc">Premium wool blend, perfect for blazers & suits.</p><div class="price">₹390/m</div><button class="btn-outline-gold enquire-btn">Enquire</button></div>
+        </div>
+        <!-- Product 6: Children's Ethnic Wear -->
+        <div class="product-card" data-product="Children's Ethnic Wear">
+          <div class="card-img"><img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=500&auto=format" alt="Kids Ethnic" loading="lazy"></div>
+          <div class="card-info"><div class="category-label">Kids Wear</div><h3 class="card-title">Children's Ethnic Wear</h3><p class="card-desc">Festive kurta & dhoti sets, soft fabrics.</p><div class="price">₹420</div><button class="btn-outline-gold enquire-btn">Enquire</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section #about -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="image-stack">
+        <img class="main-img" src="https://images.unsplash.com/photo-1532451904959-9f0033f6a2e7?w=800&auto=format" alt="Traditional weaving" loading="lazy">
+        <img class="accent-img" src="https://images.unsplash.com/photo-1528698827591-e19b1a23e24c?w=400&auto=format" alt="Textile detail" loading="lazy">
+        <div class="gold-badge-about">5★ Rated Store</div>
+      </div>
+      <div>
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title" style="font-size:2.5rem;">Rooted in Erode, Woven with Pride</h2>
+        <div class="gold-divider"></div>
+        <p style="margin-bottom:1rem;">For over two decades, Adinath Texofab has been the heart of authentic textiles in Erode. We collaborate directly with master weavers and artisans, preserving centuries-old techniques while embracing contemporary elegance.</p>
+        <p style="margin-bottom:1.5rem;">Every thread tells a story of dedication, from handpicked silks to ethically sourced cottons. Our showroom is a destination for connoisseurs who value heritage and fine craftsmanship.</p>
+        <div class="features-grid">
+          <div class="feature-block"><h4>Premium Quality</h4><p style="font-size:0.85rem;">Rigorous quality checks, no compromise.</p></div>
+          <div class="feature-block"><h4>Wide Selection</h4><p style="font-size:0.85rem;">Sarees, shirting, dress materials & more.</p></div>
+          <div class="feature-block"><h4>Trade-Friendly</h4><p style="font-size:0.85rem;">Wholesale & retail – bulk orders welcome.</p></div>
+          <div class="feature-block"><h4>Local Legacy</h4><p style="font-size:0.85rem;">Proudly Tamil Nadu’s textile hub.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section #contact -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-label" style="color:var(--gold);">Visit Our Store</div>
+          <h2 style="font-family:'Cormorant Garamond'; font-size:2.2rem; margin-bottom:1.2rem;">Let’s Weave a Connection</h2>
+          <p>📍 43, Brinda St, Sathiya Main Road, Kottai, Erode, Tamil Nadu 638001</p>
+          <p>📞 095432 77500</p>
+          <p>🕒 Mon–Sat: 9:00 AM – 7:00 PM</p>
+          <p>🗺️ Plus Code: 8PVF+8X Erode</p>
+          <iframe class="map-iframe" src="https://maps.google.com/maps?q=43%20Brinda%20St%2C%20Sathiya%20Main%20Road%2C%20Kottai%2C%20Erode%2C%20Tamil%20Nadu%20638001&output=embed" title="Google Map" loading="lazy"></iframe>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <input type="text" id="nameField" placeholder="Full Name" required>
+            <input type="tel" id="phoneField" placeholder="Phone Number" required>
+            <input type="email" id="emailField" placeholder="Email Address" required>
+            <input type="text" id="storeAddressField" readonly value="43, Brinda St, Sathiya Main Road, Kottai, Erode, Tamil Nadu 638001">
+            <textarea id="msgField" rows="4" placeholder="Tell us about your requirements..."></textarea>
+            <button type="submit" class="btn-outline-gold" style="background:transparent; border-color:var(--gold); color:var(--gold);">Send Message</button>
+            <div id="formFeedback" style="margin-top:1rem;"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">ADINATH TEXOFAB</div>
+      <p style="margin-top:0.8rem; font-size:0.85rem;">Tradition woven into every yard. Luxury, authenticity, and heart of Tamil Nadu's textile legacy.</p>
+    </div>
+    <div class="footer-links">
+      <h4 style="color:var(--cream); margin-bottom:1rem;">Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-categories">
+      <h4 style="color:var(--cream); margin-bottom:1rem;">Categories</h4>
+      <a href="#shop">Sarees</a>
+      <a href="#shop">Shirting</a>
+      <a href="#shop">Dress Materials</a>
+      <a href="#shop">Veshtis</a>
+      <a href="#shop">Suiting</a>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2025 Adinath Texofab — Handcrafted with pride in Erode.
+  </div>
+</footer>
+
+<script>
+  (function() {
+    // Enquire buttons: scroll to contact and prefill message field
+    const enquireBtns = document.querySelectorAll('.enquire-btn');
+    const contactSection = document.getElementById('contact');
+    const messageTextarea = document.getElementById('msgField');
+
+    function scrollToContactAndFill(productName) {
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      if (messageTextarea) {
+        messageTextarea.value = `I'm interested in: ${productName}. Please share more details.`;
+        // optional: focus on message
+        setTimeout(() => {
+          messageTextarea.focus();
+        }, 500);
+      }
+    }
+
+    enquireBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = btn.closest('.product-card');
+        if (card) {
+          const productTitleElem = card.querySelector('.card-title');
+          let productName = productTitleElem ? productTitleElem.innerText : 'this product';
+          scrollToContactAndFill(productName);
+        } else {
+          scrollToContactAndFill('selected fabric');
+        }
+      });
+    });
+
+    // Contact form submission: success message & clear fields
+    const form = document.getElementById('contactForm');
+    const feedbackDiv = document.getElementById('formFeedback');
+    const nameInput = document.getElementById('nameField');
+    const phoneInput = document.getElementById('phoneField');
+    const emailInput = document.getElementById('emailField');
+    const msgInput = document.getElementById('msgField');
+    const storeAddress = document.getElementById('storeAddressField'); // readonly
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // simple check: ensure required fields have some value (basic)
+      if (!nameInput.value.trim() || !phoneInput.value.trim() || !emailInput.value.trim()) {
+        feedbackDiv.innerHTML = '<div style="background:#8B3A3A; padding:0.7rem;">Please fill in Name, Phone & Email.</div>';
+        setTimeout(() => { feedbackDiv.innerHTML = ''; }, 3000);
+        return;
+      }
+      // show success message
+      feedbackDiv.innerHTML = '<div class="success-message">✨ Thank you! Our team will reach out shortly. ✨</div>';
+      // clear all editable fields
+      nameInput.value = '';
+      phoneInput.value = '';
+      emailInput.value = '';
+      msgInput.value = '';
+      // Store address remains readonly and unchanged
+      setTimeout(() => {
+        feedbackDiv.innerHTML = '';
+      }, 4000);
+    });
+
+    // Additional: smooth scroll for all nav links + any internal CTA already uses href
+    document.querySelectorAll('.nav-links a, a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId !== '#' && targetId.startsWith('#')) {
+          const targetElem = document.querySelector(targetId);
+          if (targetElem) {
+            e.preventDefault();
+            targetElem.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
